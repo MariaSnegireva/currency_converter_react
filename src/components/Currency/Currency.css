@@ -1,0 +1,25 @@
+.input {
+  width: 100px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.input:focus {
+  outline: none; 
+  border: 2px solid #3498db;
+}
+
+.select {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.select:focus {
+  outline: none; 
+  border: 2px solid #3498db;
+}
