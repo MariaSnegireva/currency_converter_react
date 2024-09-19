@@ -38,7 +38,6 @@
       "last 1 safari version"
     ]
   },
-  
   "devDependencies": {
     "stylelint": "^16.9.0",
     "stylelint-config-standard": "^36.0.1",
