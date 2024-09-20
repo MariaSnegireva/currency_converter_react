@@ -9,7 +9,7 @@ export default function Currency({
   amount
 }) {
   return (
-    <div>
+    <div className="currency_options">
       <input
         type="number"
         className="input"

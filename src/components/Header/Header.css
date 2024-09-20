@@ -1,4 +1,8 @@
 .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: #007bff;
   color: white;
   padding: 20px;

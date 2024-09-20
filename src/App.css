@@ -10,14 +10,13 @@ h1 {
 }
 
 .currency_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
 }
 
 .equals {
   margin: 0 20px;
   font-size: 24px;
+  text-align: center;
 }
 
 .loader {
