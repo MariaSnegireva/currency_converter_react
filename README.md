@@ -1,6 +1,8 @@
 # Currency Converter
 
 A simple currency converter application that allows users to convert between different currencies. It fetches real-time exchange rates from a public API and provides a user-friendly interface for conversion.
+ 
+[Demo](https://mariasnegireva.github.io/currency_converter_react/)
 
 ## Features
 
