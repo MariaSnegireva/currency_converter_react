@@ -3,9 +3,15 @@ import './App.css';
 import Currency from './components/Currency';
 import Header from './components/Header';
 
+const today = new Date();
+const year = today.getFullYear();
+const month = String(today.getMonth() + 1).padStart(2, '0');
+const day = String(today.getDate()).padStart(2, '0');
 
 // const BASE_URL_API = '/NBU_Exchange/exchange?date=01.09.2024&json';
-const BASE_URL_API = 'https://cors-anywhere.herokuapp.com/https://bank.gov.ua/NBU_Exchange/exchange?date=01.09.2024&json';
+// const BASE_URL_API = `https://cors-anywhere.herokuapp.com/https://bank.gov.ua/NBU_Exchange/exchange?date=${day}.${month}.${year}&json`;
+
+const BASE_URL_API = `https://bank.gov.ua/NBU_Exchange/exchange?date=${day}.${month}.${year}&json`;
 
 function App() {
   const [currencyOptions, setCurrencyOptions] = useState([]);
