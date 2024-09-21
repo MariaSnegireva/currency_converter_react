@@ -24,7 +24,9 @@ A simple currency converter application that allows users to convert between dif
 git clone <https://github.com/your-username/currency-converter.git>
 ```
 
+```bash
 cd currency-converter
+```
 
 -Install dependencies:
 
@@ -39,3 +41,11 @@ npm start
 ```
 
 Open your browser and go to <http://localhost:3000> to view the application.
+
+## Development
+
+Stylelint: Basic linting rules for CSS are included. Run npm run lint:styles to check styles.
+
+## Acknowledgements
+
+Thanks to the National Bank of Ukraine for providing the exchange rates API.

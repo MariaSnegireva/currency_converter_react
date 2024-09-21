@@ -3,15 +3,8 @@ import './App.css';
 import Currency from './components/Currency';
 import Header from './components/Header';
 
-const today = new Date();
-const year = today.getFullYear();
-const month = String(today.getMonth() + 1).padStart(2, '0');
-const day = String(today.getDate()).padStart(2, '0');
 
-// const BASE_URL_API = '/NBU_Exchange/exchange?date=${day}.${month}.${year}&json';
- const BASE_URL_API = `https://cors-anywhere.herokuapp.com/https://bank.gov.ua/NBU_Exchange/exchange?date=${day}.${month}.${year}&json`;
-
-// const BASE_URL_API = `https://bank.gov.ua/NBU_Exchange/exchange?date=${day}.${month}.${year}&json`;
+const BASE_URL_API = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json';
 
 function App() {
   const [currencyOptions, setCurrencyOptions] = useState([]);
@@ -59,15 +52,15 @@ function App() {
     fetch(BASE_URL_API)
       .then(response => response.json())
       .then(currencyData => {
-        const usdCurrency = currencyData.find(item => item.CurrencyCodeL === 'USD');
-        const eurCurrency = currencyData.find(item => item.CurrencyCodeL === 'EUR');
+        const usdCurrency = currencyData.find(item => item.cc === 'USD');
+        const eurCurrency = currencyData.find(item => item.cc === 'EUR');
         const options = ['UAH', 'USD', 'EUR'];
         setCurrencyOptions(options);
         setFromCurrency('USD');
         setToCurrency('UAH');
-        setExchangeRate(usdCurrency ? usdCurrency.Amount : 1);
-        setUsdToUah(usdCurrency ? usdCurrency.Amount : 0);
-        setEurToUah(eurCurrency ? eurCurrency.Amount : 0);
+        setExchangeRate(usdCurrency ? usdCurrency.rate : 1);
+        setUsdToUah(usdCurrency ? usdCurrency.rate : 0);
+        setEurToUah(eurCurrency ? eurCurrency.rate : 0);
       })
       .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
@@ -81,15 +74,15 @@ function App() {
       fetch(BASE_URL_API)
         .then(response => response.json())
         .then(currencyData => {
-          const fromCurrencyData = currencyData.find(item => item.CurrencyCodeL === fromCurrency);
-          const toCurrencyData = currencyData.find(item => item.CurrencyCodeL === toCurrency);
+          const fromCurrencyData = currencyData.find(item => item.cc === fromCurrency);
+          const toCurrencyData = currencyData.find(item => item.cc === toCurrency);
           
           if (fromCurrency === 'UAH') {
-            setExchangeRate(1 / toCurrencyData?.Amount || 1);
+            setExchangeRate(1 / toCurrencyData?.rate || 1);
           } else if (toCurrency === 'UAH') {
-            setExchangeRate(fromCurrencyData?.Amount || 1);
+            setExchangeRate(fromCurrencyData?.rate || 1);
           } else {
-            setExchangeRate(fromCurrencyData?.Amount / toCurrencyData?.Amount);
+            setExchangeRate(fromCurrencyData?.rate / toCurrencyData?.Amount);
           }
         })
         .catch(error => console.error('Error fetching data:', error));
@@ -100,7 +93,7 @@ function App() {
     <div>
       
       {isLoading && (
-          <h1 className="loader"></h1>
+          <p className="loader"></p>
         )} 
         {isError && (
           <h1 className="error_message">Error fetching data</h1>
