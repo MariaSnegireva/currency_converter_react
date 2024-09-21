@@ -82,7 +82,7 @@ function App() {
           } else if (toCurrency === 'UAH') {
             setExchangeRate(fromCurrencyData?.rate || 1);
           } else {
-            setExchangeRate(fromCurrencyData?.rate / toCurrencyData?.Amount);
+            setExchangeRate(fromCurrencyData?.rate / toCurrencyData?.rate);
           }
         })
         .catch(error => console.error('Error fetching data:', error));
